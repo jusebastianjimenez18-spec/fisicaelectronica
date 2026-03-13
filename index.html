@@ -16,13 +16,13 @@
             text-align: center; 
             background-color: #020202;
             color: white; 
-            padding: 40px 20px; /* Un poco más de espacio */
+            padding: 40px 20px; 
             margin-bottom: 20px; 
             border-radius: 10px;
-            position: relative; /* Importante para que el botón se ubique respecto al header */
+            position: relative; 
         }
 
-        /* ESTILO DEL BOTÓN SALIR */
+    
         .btn-salir {
             position: absolute;
             top: 15px;
@@ -83,7 +83,7 @@
             font-size: 1.2em; 
         }
 
-        /* ESTILO PARA LOS VIDEOS */
+
         iframe {
             display: block;
             margin-top: 15px;
@@ -108,12 +108,18 @@
         <h1>..FISICA ELECTRONICA..</h1>
         <p>la super pagina de sebas jimenez :D</p>
         <button class="btn-salir" onclick="window.history.back();">Salir</button>
-        <script>
-            function = salir(){
-                if (document.referrer !== "") {
+        <button class="btn-salir" onclick="salir()">Salir</button>
+
+<script>
+function salir() {
+
+    if (document.referrer !== "") {
         window.history.back();
-                } else }
-            window.location.href = "https://www.google.com";
+    } else {
+        window.location.href = "https://www.google.com";
+    }
+}
+</script>
             
                 
     </header>
@@ -155,6 +161,7 @@
 
 </body>
 </html>
+
 
 
 
