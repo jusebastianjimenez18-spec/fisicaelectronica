@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>aprende fisica</title>
+    <title>Aprende Física</title>
     <style>
         body { 
             font-family: Arial, sans-serif;
@@ -16,9 +16,29 @@
             text-align: center; 
             background-color: #020202;
             color: white; 
-            padding: 20px; 
+            padding: 40px 20px; /* Un poco más de espacio */
             margin-bottom: 20px; 
             border-radius: 10px;
+            position: relative; /* Importante para que el botón se ubique respecto al header */
+        }
+
+        /* ESTILO DEL BOTÓN SALIR */
+        .btn-salir {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-salir:hover {
+            background-color: #cc0000;
         }
 
         h1 { margin: 0; font-size: 2.5em; }
@@ -33,17 +53,15 @@
             border-radius: 15px;
         }
 
-
         .imagen-grande {
             width: 40%; 
-            max-width: 400px; 
+            max-width: 350px; 
             height: auto;
             margin-right: 30px;
             border-radius: 10px; 
             box-shadow: 5px 5px 15px rgba(0,0,0,0.2); 
         }
 
-        
         .texto-ley {
             width: 60%; 
         }
@@ -55,7 +73,6 @@
         }
 
         p { line-height: 1.6; } 
-
         strong { color: #0056b3; } 
 
         code { 
@@ -65,6 +82,8 @@
             font-weight: bold; 
             font-size: 1.2em; 
         }
+
+        /* ESTILO PARA LOS VIDEOS */
         iframe {
             display: block;
             margin-top: 15px;
@@ -81,22 +100,18 @@
             .texto-ley { width: 100%; }
             iframe { margin: 15px auto; }
         }
-        
-        small { display: block; margin-top: 10px; color: #666; font-style: italic; }
-
     </style>
 </head>
 <body>
 
     <header>
         <h1>..FISICA ELECTRONICA..</h1>
-        <p>la super pagina de sebas jimenez :D </p>
-        <button class="btn-salir" onclick="window.history.back();">salir</button>
+        <p>la super pagina de sebas jimenez :D</p>
+        <button class="btn-salir" onclick="window.history.back();">Salir</button>
     </header>
 
     <div class="seccion-ley">
         <img src="https://media.fluke.com/bdf77156-4988-4917-9d38-b108002b4775_original__size.jpg" alt="Triángulo de la Ley de Ohm" class="imagen-grande">
-        
         <div class="texto-ley">
             <h2>1. Ley de Ohm</h2>
             <p>Esta ley nos dice cómo se relacionan tres cosas importantes:</p>
@@ -106,38 +121,33 @@
                 <li><strong>Resistencia (R)</strong>: Que tanto se opone el material al paso.</li>
             </ul>
             <p>La formula es: <code>V = I × R</code></p>
-            <iframe= scr ="https://www.youtube.com/watch?v=_ZICyi2lOd8&t=19s" title= "YouTube video player" allowfullscreen></iframe>
-            
+            <iframe src="https://www.youtube.com/embed/_ZICyi2lOd8" title="YouTube video player" allowfullscreen></iframe>
         </div>
     </div>
 
     <div class="seccion-ley">
         <img src="https://www.ejemplode.com/images/uploads/fisica/ley-de-watt1.jpg" alt="Diagrama de un foco" class="imagen-grande">
-        
         <div class="texto-ley">
             <h2>2. Ley de Watt</h2>
             <p>Esta ley nos habla de la <strong>Potencia (P)</strong>, que es cuanta energia se usa o se produce cada segundo.</p>
-            <p>Se usa, por ejemplo, para saber cuánta luz da un foco o cuánta energía consume un electrodoméstico.</p>
             <p>La fórmula es: <code>P = V × I</code></p>
-            <iframe= scr = "https://www.youtube.com/watch?v=nT1t_DbO3xU&t=18s" title= "YouTube video player" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/nT1t_DbO3xU" title="YouTube video player" allowfullscreen></iframe>
         </div>
     </div>
 
     <div class="seccion-ley">
-        <img src="https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/e764d3e5-fde7-401d-94d8-1bf6030e3ba7-v2" alt="Símbolo de calor en una resistencia" class="imagen-grande">
-        
-        
+        <img src="https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/e764d3e5-fde7-401d-94d8-1bf6030e3ba7-v2" alt="Calor en resistencia" class="imagen-grande">
         <div class="texto-ley">
             <h2>3. Ley de Joule</h2>
             <p>Esta ley explica que cuando la electricidad pasa por un cable, siempre genera <strong>calor (Q)</strong>.</p>
-            <p>¡Es por eso que los focos antiguos se calientan y por qué los cables de la plancha o el calentador se ponen tibios!</p>
             <p>La fórmula es: <code>Q = I² × R × t</code></p>
-            <iframe= scr = "https://www.youtube.com/watch?v=b-1cdShAzGU" title="YouTube video player" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/b-1cdShAzGU" title="YouTube video player" allowfullscreen></iframe>
         </div>
     </div>
 
 </body>
 </html>
+
 
 
 
