@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aprende Física</title>
+    <title>Aprende Física - Sebas Jimenez</title>
     <style>
+        :root {
+            --azul-oscuro: #0d47a1;
+            --azul-medio: #1976d2;
+            --azul-claro: #81b6d4;
+            --azul-borde: #bbdefb;
+            --fondo-seccion: #f0f7ff;
+            --color-real: #2196F3;
+            --color-convencional: #F44336;
+        }
+
         body { 
-            font-family: Arial, sans-serif;
-            background-color: #81b6d4; 
-            margin: 0; padding: 20px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--azul-claro); 
+            margin: 0; 
+            padding: 20px;
             font-size: 18px; 
         }
         
@@ -22,37 +33,38 @@
             position: relative; 
         }
 
-    
-        .btn-volver {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-    z-index: 10;
-}
+        /* Botón Salir/Volver arriba a la derecha */
+        .btn-salir {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            z-index: 100;
+        }
 
-        .btn-volver:hover {
-    background-color: #cc0000;
-    transform: scale(1.05);
-}
+        .btn-salir:hover {
+            background-color: #cc0000;
+            transform: scale(1.05);
+        }
 
-        h1 { margin: 0; font-size: 2.5em; }
+        h1 { margin: 0; font-size: 2.5em; text-transform: uppercase; letter-spacing: 2px; }
         
         .seccion-ley {
             display: flex;
             align-items: center; 
             background-color: white; 
             margin-bottom: 30px; 
-            padding: 20px;
+            padding: 25px;
             border: 2px solid #ccc; 
             border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .imagen-grande {
@@ -74,6 +86,7 @@
             margin-top: 0; 
         }
 
+        .label { font-weight: bold; color: var(--azul-oscuro); }
         p { line-height: 1.6; } 
         strong { color: #0056b3; } 
 
@@ -82,9 +95,8 @@
             padding: 5px 10px; 
             border-radius: 5px; 
             font-weight: bold; 
-            font-size: 1.2em; 
+            font-size: 1.1em; 
         }
-
 
         iframe {
             display: block;
@@ -95,6 +107,54 @@
             border-radius: 10px;
             border: 1px solid #ddd;
         }
+
+        /* --- ESTILOS FASE 5 ANIMADA --- */
+        .fase5-container {
+            background-color: var(--fondo-seccion);
+            border-left: 6px solid var(--azul-medio);
+            padding: 30px;
+            margin-top: 40px;
+            border-radius: 0 15px 15px 0;
+        }
+
+        .circuito-animado {
+            position: relative;
+            width: 300px;
+            height: 180px;
+            margin: 30px auto;
+            border: 4px solid #555;
+            border-radius: 15px;
+            background: #fff;
+        }
+
+        .componente-f5 {
+            position: absolute;
+            padding: 5px 10px;
+            background: white;
+            border: 2px solid #333;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .pila-f5 { left: -35px; top: 70px; transform: rotate(-90deg); }
+        .luz-f5 { 
+            right: -25px; top: 65px; width: 45px; height: 45px; 
+            border-radius: 50%; background: #fff9c4;
+            animation: brillo-f5 1.5s infinite alternate;
+        }
+
+        .particula-f5 {
+            position: absolute; width: 12px; height: 12px; border-radius: 50%;
+            offset-path: border-box;
+            offset-path: path("M 0 0 L 300 0 L 300 180 L 0 180 Z");
+        }
+
+        .real-f5 { background: var(--color-real); animation: fluir-real-f5 4s linear infinite; }
+        .conv-f5 { background: var(--color-convencional); animation: fluir-conv-f5 4s linear infinite; }
+
+        @keyframes fluir-real-f5 { from { offset-distance: 100%; } to { offset-distance: 0%; } }
+        @keyframes fluir-conv-f5 { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+        @keyframes brillo-f5 { from { box-shadow: 0 0 5px #fff176; background: #fff9c4; } to { box-shadow: 0 0 25px #fbc02d; background: #ffeb3b; } }
 
         @media (max-width: 768px) {
             .seccion-ley { flex-direction: column; text-align: center; }
@@ -107,60 +167,82 @@
 <body>
 
     <header>
-    <h1>..FISICA ELECTRONICA..</h1>
-    <p>la super pagina de Sebas Jimenez :D</p>
-    
-    <button class="btn-salir" onclick="volver()">Volver</button>
-</header>
-
-<script>
-function volver() {
-
-    if (document.referrer !== "") {
-        window.history.back();
-    } else {
-        window.location.href = "https://jusebastianjimenez18-spec.github.io/fisicaelectronica/";
-    }
-}
-</script>
-            
-                
+        <h1>..FISICA ELECTRONICA..</h1>
+        <p>La súper página de Sebas Jimenez :D</p>
+        <button class="btn-salir" onclick="volver()">VOLVER</button>
     </header>
 
     <div class="seccion-ley">
-        <img src="https://media.fluke.com/bdf77156-4988-4917-9d38-b108002b4775_original__size.jpg" alt="Triángulo de la Ley de Ohm" class="imagen-grande">
+        <img src="https://media.fluke.com/bdf77156-4988-4917-9d38-b108002b4775_original__size.jpg" alt="Ley de Ohm" class="imagen-grande">
         <div class="texto-ley">
             <h2>1. Ley de Ohm</h2>
-            <p>Esta ley nos dice cómo se relacionan tres cosas importantes:</p>
-            <ul>    
-                <li><strong>Voltaje (V)</strong>: La "fuerza" que empuja la electricidad.</li>
-                <li><strong>Corriente (I)</strong>: La cantidad de electricidad que pasa.</li>
-                <li><strong>Resistencia (R)</strong>: Que tanto se opone el material al paso.</li>
+            <p>Relaciona los tres parámetros básicos de un circuito eléctrico:</p>
+            <ul> 
+                <li><strong>Voltaje (V)</strong>: La fuerza que impulsa la electricidad.</li>
+                <li><strong>Corriente (I)</strong>: El flujo de carga eléctrica.</li>
+                <li><strong>Resistencia (R)</strong>: La oposición al paso de la corriente.</li>
             </ul>
-            <p>La formula es: <code>V = I × R</code></p>
-            <iframe src="https://www.youtube.com/embed/_ZICyi2lOd8" title="YouTube video player" allowfullscreen></iframe>
+            <p>Fórmula: <code>V = I × R</code></p>
+            <iframe src="https://www.youtube.com/embed/_ZICyi2lOd8" title="YouTube Ohm" allowfullscreen></iframe>
         </div>
     </div>
 
     <div class="seccion-ley">
-        <img src="https://www.ejemplode.com/images/uploads/fisica/ley-de-watt1.jpg" alt="Diagrama de un foco" class="imagen-grande">
+        <img src="https://www.ejemplode.com/images/uploads/fisica/ley-de-watt1.jpg" alt="Ley de Watt" class="imagen-grande">
         <div class="texto-ley">
             <h2>2. Ley de Watt</h2>
-            <p>Esta ley nos habla de la <strong>Potencia (P)</strong>, que es cuanta energia se usa o se produce cada segundo.</p>
-            <p>La fórmula es: <code>P = V × I</code></p>
-            <iframe src="https://www.youtube.com/embed/nT1t_DbO3xU" title="YouTube video player" allowfullscreen></iframe>
+            <p>Define la <strong>Potencia (P)</strong> como la velocidad con la que se consume o transforma la energía.</p>
+            <p>Fórmula: <code>P = V × I</code></p>
+            <iframe src="https://www.youtube.com/embed/nT1t_DbO3xU" title="YouTube Watt" allowfullscreen></iframe>
         </div>
     </div>
 
     <div class="seccion-ley">
-        <img src="https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/e764d3e5-fde7-401d-94d8-1bf6030e3ba7-v2" alt="Calor en resistencia" class="imagen-grande">
+        <img src="https://media.quizizz.com/_mdserver/main/media/resource/gs/quizizz-media/quizzes/e764d3e5-fde7-401d-94d8-1bf6030e3ba7-v2" alt="Ley de Joule" class="imagen-grande">
         <div class="texto-ley">
             <h2>3. Ley de Joule</h2>
-            <p>Esta ley explica que cuando la electricidad pasa por un cable, siempre genera <strong>calor (Q)</strong>.</p>
-            <p>La fórmula es: <code>Q = I² × R × t</code></p>
-            <iframe src="https://www.youtube.com/embed/b-1cdShAzGU" title="YouTube video player" allowfullscreen></iframe>
+            <p>Explica cómo la energía eléctrica se transforma en <strong>calor (Q)</strong> al pasar por una resistencia.</p>
+            <p>Fórmula: <code>Q = I² × R × t</code></p>
+            <iframe src="https://www.youtube.com/embed/b-1cdShAzGU" title="YouTube Joule" allowfullscreen></iframe>
         </div>
     </div>
+
+    <div class="fase5-container">
+        <h2 style="color: var(--azul-oscuro); background: none; border: none; padding: 0;">FASE 5: PREDICCIÓN VISUAL Y ANÁLISIS FINAL</h2>
+        
+        <div class="circuito-animado">
+            <div class="componente-f5 pila-f5">PILA</div>
+            <div class="componente-f5 luz-f5"></div>
+            <div class="particula-f5 real-f5" title="Sentido Real"></div>
+            <div class="particula-f5 conv-f5" style="animation-delay: 2s;" title="Sentido Convencional"></div>
+        </div>
+
+        <h3>¿Por qué el bombillo enciende igual?</h3>
+        <p>
+            Aunque el <strong>Sentido Real</strong> (flujo de electrones de negativo a positivo) y el <strong>Sentido Convencional</strong> (de positivo a negativo) son opuestos, el bombillo enciende porque ambos describen el paso de cargas a través del filamento[cite: 75, 76, 77]. El trabajo se realiza por el movimiento de las cargas, sin importar la dirección del análisis técnico[cite: 77, 79].
+        </p>
+
+        <h3>Distribución de Energía</h3>
+        <ul>
+            <li><span class="label">Mayor Energía:</span> Se identifica en el <strong>polo positivo (+)</strong> de la pila[cite: 78].</li>
+            <li><span class="label">Menor Energía:</span> Se identifica en el <strong>polo negativo (-)</strong>, tras entregar la energía al receptor[cite: 78].</li>
+        </ul>
+
+        <h3>Justificación Técnica</h3>
+        <p>
+            El <strong>voltaje</strong> actúa como la fuerza necesaria para el movimiento, mientras que la <strong>corriente</strong> es la magnitud que atraviesa el bombillo para producir luz[cite: 79].
+        </p>
+    </div>
+
+    <script>
+        function volver() {
+            if (document.referrer !== "" && !document.referrer.includes(window.location.hostname)) {
+                window.history.back();
+            } else {
+                window.location.href = "https://jusebastianjimenez18-spec.github.io/fisicaelectronica/";
+            }
+        }
+    </script>
 
 </body>
 </html>
