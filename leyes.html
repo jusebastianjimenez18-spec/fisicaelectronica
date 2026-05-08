@@ -23,7 +23,7 @@
         }
 
     
-        .btn-salir {
+        .btn-volver {
             position: absolute;
             top: 15px;
             right: 15px;
@@ -107,11 +107,11 @@
     <header>
         <h1>..FISICA ELECTRONICA..</h1>
         <p>la super pagina de Sebas Jimenez :D</p>
-        <button class="btn-salir" onclick="window.history.back();">Salir</button>
-        <button class="btn-salir" onclick="salir()">Salir</button>
+        <button class="btn-salir" onclick="window.history.back();">volver</button>
+        <button class="btn-salir" onclick="volver()">volver</button>
 
 <script>
-function salir() {
+function volver() {
 
     if (document.referrer !== "") {
         window.history.back();
