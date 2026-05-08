@@ -1,22 +1,205 @@
-<h2>FASE 5: ANÁLISIS FINAL Y PREDICCIÓN VISUAL</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Investigación - Electricidad</title>
+    <style>
+        :root {
+            --azul-oscuro: #0d47a1;
+            --azul-medio: #1976d2;
+            --azul-claro: #e3f2fd;
+            --azul-borde: #bbdefb;
+            --fondo-seccion: #f0f7ff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--azul-claro);
+            color: #333;
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .area-boton {
+            max-width: 1000px;
+            margin: 0 auto 20px auto;
+            padding: 0;
+        }
+
+        .boton-rectangular {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--azul-medio);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            font-family: sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .boton-rectangular:hover {
+            background-color: var(--azul-oscuro);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(13, 71, 161, 0.1);
+            border-top: 12px solid var(--azul-medio);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--azul-oscuro);
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            background-color: var(--azul-medio);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 30px;
+        }
+
+        h3 {
+            color: var(--azul-medio);
+            border-bottom: 2px solid var(--azul-borde);
+            padding-bottom: 5px;
+            margin-top: 25px;
+        }
+
+        .section {
+            background-color: var(--fondo-seccion);
+            border-left: 6px solid var(--azul-medio);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .item {
+            margin-bottom: 15px;
+        }
+
+        .label {
+            font-weight: bold;
+            color: var(--azul-oscuro);
+        }
+
+        .analogia-box {
+            background: #e1f5fe;
+            border: 2px dashed var(--azul-medio);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        ul {
+            list-style-type: square;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: var(--azul-medio);
+        }
+    </style>
+</head>
+<body>
+
+<div class="area-boton">
+    <a href="https://jusebastianjimenez18-spec.github.io/fisicaelectronica/" class="boton-rectangular">
+        VOLVER
+    </a>
+</div>
+
+<div class="container">
+    <h1>Taller de Investigación</h1>
+
+    <h2>FASE 1: EXPLORACIÓN</h2>
+    <div class="section">
+        <div class="item"><span class="label">1. Electricidad:</span> Conjunto de fenómenos físicos relacionados con la presencia y flujo de cargas eléctricas. Se mide en Julios (J) o Kilovatios-hora (kWh). Ejemplo: El encendido de una bombilla[cite: 20].</div>
+        <div class="item"><span class="label">2. Electrón:</span> Partícula con carga negativa que rodea el núcleo del átomo. Se mide en Coulombs (C) y se representa como e-. Ejemplo: Estática al frotar calcetines[cite: 21].</div>
+        <div class="item"><span class="label">3. Movimiento de electrones:</span> Desplazamiento ordenado a través de un conductor. Se mide en Amperios (A)[cite: 22].</div>
+    </div>
+
+    <h3>Bloque 2: Flujo eléctrico</h3>
+    <div class="section">
+        <p><span class="label">Sentido Real:</span> Dirección física del terminal negativo (-) al positivo (+)[cite: 26].</p>
+        <p><span class="label">Sentido Convencional:</span> Convención histórica que va del terminal positivo (+) al negativo (-)[cite: 27].</p>
+    </div>
+
+    <h2>FASE 2: ANÁLISIS</h2>
+    <div class="section">
+        <ol>
+            <li>Los electrones necesitan energía porque los átomos los mantienen atrapados; el voltaje es el impulso necesario[cite: 48].</li>
+            <li>El sentido convencional evita confusiones con leyes físicas establecidas históricamente[cite: 49].</li>
+            <li>Si la resistencia fuera cero, ocurriría un cortocircuito con calor extremo[cite: 50].</li>
+            <li>La potencia se transforma en calor cuando encuentra resistencia (Efecto Joule)[cite: 51].</li>
+            <li>Usamos cobre por ser gran conductor y plástico por ser aislante[cite: 52].</li>
+        </ol>
+    </div>
+
+    <h2>FASE 3: SITUACIÓN PROBLEMA</h2>
+    <div class="section">
+        <p><span class="label">Transformación:</span> El cargador reduce el voltaje (110V a 5V) para que el celular funcione sin dañarse[cite: 56, 58].</p>
+        <p><span class="label">Disciplinas:</span> Se usan ambas: Electricidad para potencia y Electrónica para control[cite: 62].</p>
+    </div>
+
+    <h2>FASE 4: ANALOGÍA HIDRÁULICA</h2>
+    <div class="analogia-box">
+        <p><strong>1. Voltaje = Altura del Tanque:</strong> La presión que invita al agua a moverse[cite: 68].</p>
+        <p><strong>2. Corriente = Caudal:</strong> Cantidad de agua que fluye por segundo[cite: 69].</p>
+        <p><strong>3. Resistencia = Boquilla:</strong> Obstáculo que dificulta el paso del flujo[cite: 71].</p>
+    </div>
+
+    <h2>FASE 5: PREDICCIÓN VISUAL Y ANÁLISIS FINAL</h2>
     <div class="section">
         <div style="text-align: center; margin-bottom: 20px; padding: 10px; border: 2px dashed var(--azul-borde); border-radius: 10px; background-color: white;">
-            <img src="C:\Users\amahi\Documents\Circuito.png" style="max-width: 100%; height: auto; border-radius: 5px;" alt="Circuito con sentido real y convencional">
+            <img src="C:\Users\amahi\Documents\Circuito.png" style="max-width: 100%; height: auto; border-radius: 5px;" alt="Circuito final">
         </div>
-
-        <h3>1. ¿Por qué el bombillo enciende igual?</h3>
+        
+        <h3>¿Por qué el bombillo enciende igual?</h3>
         <p>
-            Aunque el <strong>Sentido Real</strong> (flechas azules, de negativo a positivo) [cite: 75] y el <strong>Sentido Convencional</strong> (flechas rojas, de positivo a negativo) [cite: 76] son opuestos, el bombillo enciende porque ambos representan el mismo fenómeno físico: el flujo de energía. El filamento del bombillo reacciona al movimiento de las cargas eléctricas independientemente de la dirección que usemos para el análisis; lo que importa es que la corriente atraviese el componente para transformar la energía eléctrica en luz y calor[cite: 77].
+            Aunque el <strong>Sentido Real</strong> (flechas azules) y el <strong>Sentido Convencional</strong> (flechas rojas) son opuestos, el bombillo enciende porque ambos representan el flujo de energía a través del filamento[cite: 75, 76, 77]. Lo que genera la luz es el movimiento de las cargas, sin importar la dirección que usemos para el análisis técnico[cite: 77].
         </p>
 
-        <h3>2. Distribución de Energía</h3>
+        <h3>Distribución de Energía</h3>
         <ul>
-            <li><span class="label">Mayor Energía:</span> Se identifica en el <strong>polo positivo (+)</strong> de la pila, donde el voltaje está en su punto máximo antes de realizar un trabajo[cite: 78, 79].</li>
-            <li><span class="label">Menor Energía:</span> Se identifica en el <strong>polo negativo (-)</strong>, después de que la corriente ha pasado por el bombillo y ha entregado su energía[cite: 78].</li>
+            <li><span class="label">Mayor Energía:</span> Se identifica en el <strong>polo positivo (+)</strong> de la fuente.</li>
+            <li><span class="label">Menor Energía:</span> Se identifica en el <strong>polo negativo (-)</strong>, tras entregar la energía al bombillo.</li>
         </ul>
 
-        <h3>3. Justificación Técnica</h3>
+        <h3>Justificación Técnica</h3>
         <p>
-            El <strong>voltaje</strong> actúa como la presión necesaria para mover las cargas, mientras que la <strong>corriente</strong> es el flujo físico que transporta esa energía a través del cable[cite: 79]. Sin la diferencia de potencial (voltaje) entre los polos, no habría movimiento de electrones y el bombillo permanecería apagado.
+            El <strong>voltaje</strong> proporciona la fuerza necesaria para el movimiento, mientras que la <strong>corriente</strong> es la magnitud que atraviesa el bombillo para realizar el trabajo de iluminar.
         </p>
     </div>
+
+    <footer>
+        Investigación Sebas Jimenez - Fundamentos Eléctricos © 2026
+    </footer>
+</div>
+
+</body>
+</html>
