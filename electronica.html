@@ -3,41 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master en Electrónica de Potencia</title>
+    <title>Master en Electrónica de Potencia - Sebas Jimenez</title>
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #10b981;
+            --azul-oscuro: #0d47a1;
+            --azul-medio: #1976d2;
+            --azul-claro: #81b6d4;
             --dark: #1f2937;
             --light: #f3f4f6;
             --text: #374151;
             --white: #ffffff;
+            --secondary: #10b981;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
 
         body {
             background-color: var(--light);
             color: var(--text);
             line-height: 1.6;
+            padding: 20px;
+            font-size: 18px;
         }
 
         header {
-            background: linear-gradient(135deg, var(--dark), #111827);
-            color: var(--white);
-            padding: 2rem 1rem;
             text-align: center;
-            border-bottom: 4px solid var(--primary);
+            background-color: #020202;
+            color: white;
+            padding: 40px 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            position: relative;
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.5em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             margin-bottom: 0.5rem;
         }
 
@@ -46,13 +53,36 @@
             font-size: 1.1rem;
         }
 
+        /* Botón VOLVER (Estilo de tu código de Física) */
+        .btn-salir {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--azul-medio);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            z-index: 100;
+        }
+
+        .btn-salir:hover {
+            background-color: #cc0000;
+            transform: scale(1.05);
+        }
+
         /* Navegación por Pestañas */
         nav {
             background-color: var(--white);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 90;
+            border-radius: 8px;
+            margin-bottom: 20px;
         }
 
         .nav-container {
@@ -78,21 +108,20 @@
         }
 
         .tab-btn:hover {
-            color: var(--primary);
+            color: var(--azul-medio);
             background-color: #f8fafc;
         }
 
         .tab-btn.active {
-            color: var(--primary);
-            border-bottom-color: var(--primary);
+            color: var(--azul-medio);
+            border-bottom-color: var(--azul-medio);
             background-color: #eff6ff;
         }
 
         /* Contenedor Principal */
         main {
             max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            margin: 0 auto;
         }
 
         .tab-content {
@@ -121,8 +150,17 @@
             background-color: var(--white);
             border-radius: 8px;
             padding: 1.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            border-left: 4px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--azul-medio);
+            border-top: 1px solid #eee;
+            border-right: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        h2 {
+            color: #c300ff;
+            font-size: 2em;
+            margin-bottom: 10px;
         }
 
         .card h3 {
@@ -131,7 +169,7 @@
             font-size: 1.3rem;
         }
 
-        /* Sección Interactiva Exclusiva */
+        /* Sección Interactiva */
         .simulator-card {
             background-color: #1e293b;
             color: #f8fafc;
@@ -174,6 +212,7 @@
             background-color: #475569;
             box-shadow: 0 0 5px rgba(0,0,0,0.5);
             transition: all 0.2s ease;
+            margin: 10px auto 0 auto;
         }
 
         .status-badge {
@@ -181,6 +220,8 @@
             border-radius: 50px;
             font-weight: bold;
             font-size: 0.85rem;
+            display: inline-block;
+            margin-top: 10px;
         }
 
         /* Bloques de Analogías y Aplicaciones */
@@ -201,6 +242,14 @@
             background-color: #d1fae5;
             border-left: 4px solid var(--secondary);
             color: #065f46;
+        }
+
+        code {
+            background-color: #ffe0b2;
+            padding: 2px 6px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #333;
         }
 
         .flex-diagram {
@@ -226,9 +275,10 @@
         footer {
             text-align: center;
             padding: 2rem;
-            background-color: var(--dark);
+            background-color: #020202;
             color: var(--white);
             margin-top: 4rem;
+            border-radius: 10px;
         }
 
         @media (max-width: 768px) {
@@ -236,14 +286,16 @@
                 flex-direction: row;
             }
             header h1 { font-size: 2rem; }
+            .btn-salir { position: static; display: block; margin: 15px auto 0 auto; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Plataforma Educativa de Electrónica</h1>
-        <p>Un viaje desde los semiconductores hasta la electrónica de potencia</p>
+        <h1>..FISICA ELECTRONICA..</h1>
+        <p>Plataforma de Electrónica de Potencia y Componentes</p>
+        <button class="btn-salir" onclick="volver()">VOLVER</button>
     </header>
 
     <nav>
@@ -251,22 +303,22 @@
             <button class="tab-btn active" onclick="openTab(event, 'u1')">Unidad 1: Diodos</button>
             <button class="tab-btn" onclick="openTab(event, 'u2')">Unidad 2: BJT</button>
             <button class="tab-btn" onclick="openTab(event, 'u3')">Unidad 3: FET/MOSFET</button>
-            <button class="tab-btn" onclick="event, openTab(event, 'u4')">Unidad 4: Potencia</button>
+            <button class="tab-btn" onclick="openTab(event, 'u4')">Unidad 4: Potencia</button>
         </div>
     </nav>
 
     <main>
         <section id="u1" class="tab-content active">
-            <h2>Unidad 1: Semiconductores y Diodos</h2>
+            <h2>1. Semiconductores y Diodos</h2>
             <p>El inicio de la electrónica de estado sólido basado en el control del flujo de electrones.</p>
             
             <div class="grid">
                 <div class="card simulator-card">
                     <h3>⚡ Simulador de Voltaje y Brillo (Requisito Interactivo)</h3>
-                    <p>Modifica el voltaje de la fuente en polarización directa para vencer la barrera de potencial del diodo LED (aproximadamente <strong>0.7V</strong> para silicio, pero requiere cerca de <strong>1.8V a 2.0V</strong> para encender un LED rojo).</p>
+                    <p>Modifica el voltaje de la fuente en polarización directa para vencer la barrera de potencial del diodo LED (requiere cerca de <code>1.7V</code> para empezar a conducir).</p>
                     
                     <div class="sim-control">
-                        <label for="voltageSlider">Voltaje de la Fuente: <strong id="voltValue">0.0</strong> V</label>
+                        <label for="voltageSlider">Voltaje de la Fuente: <strong id="voltValue" style="color: #f59e0b;">0.0</strong> V</label>
                         <input type="range" id="voltageSlider" min="0" max="5" step="0.1" value="0">
                     </div>
 
@@ -288,112 +340,112 @@
 
                 <div class="card">
                     <h3>Semiconductores y Unión PN</h3>
-                    <p>Los semiconductores (como el Silicio) modifican su conductividad al añadirles impurezas (dopado). Al unir un material tipo P (huecos) con uno tipo N (electrones), se crea la <strong>Unión PN</strong>, generando una barrera de potencial intrínseca.</p>
+                    <p>Los semiconductores (como el Silicio) modifican su conductividad mediante el dopado. Al unir un material tipo P (huecos) con uno tipo N (electrones), se crea la <strong>Unión PN</strong>, generando una barrera de potencial.</p>
                     
                     <div class="flex-diagram">
                         <div class="pn-junction"><div class="p-zone">Zona P</div><div class="n-zone">Zona N</div></div>
                     </div>
 
                     <div class="box analogy">
-                        <strong>Analogía:</strong> Imagina una puerta giratoria que solo permite pasar a la gente en una dirección. Si intentan entrar por el lado contrario, la puerta se bloquea.
+                        <strong>Analogía:</strong> Imagina una puerta giratoria que solo permite pasar a la gente en una dirección. Si intentan entrar por el lado contrario, la puerta se bloquea de inmediato.
                     </div>
                 </div>
 
                 <div class="card">
                     <h3>Diodos y LED</h3>
-                    <p>Un diodo convencional permite el paso de corriente en polarización directa y la bloquea en inversa. Los **LED** (Light Emitting Diode) son diodos especiales que liberan energía en forma de fotones (luz) cuando los electrones recombinan en la unión.</p>
+                    <p>Un diodo convencional permite el paso de corriente en polarización directa y la bloquea en inversa. Los <strong>LED</strong> (Light Emitting Diode) liberan fotones (luz) cuando los electrones se recombinan.</p>
                     <div class="box app-real">
-                        <strong>Aplicación Real:</strong> Rectificadores de corriente en cargadores de celular y luminarias del hogar de alta eficiencia.
+                        <strong>Aplicación Real:</strong> Rectificadores de corriente en cargadores de smartphones y pantallas de señalización digital.
                     </div>
                 </div>
 
                 <div class="card">
                     <h3>Diodo Zener</h3>
-                    <p>A diferencia del diodo común, el Zener está diseñado para trabajar en la zona de **ruptura (inversa)**. Mantiene un voltaje casi constante entre sus terminales aunque varíe la corriente.</p>
+                    <p>Diseñado específicamente para trabajar en la zona de <strong>ruptura (inversa)</strong>. Mantiene un voltaje casi constante entre sus terminales aunque varíe la corriente de la fuente.</p>
                     <div class="box app-real">
-                        <strong>Aplicación Real:</strong> Reguladores de voltaje protectores en circuitos electrónicos sensibles contra sobretensiones.
+                        <strong>Aplicación Real:</strong> Circuitos integrados reguladores de voltaje y sistemas de protección contra picos de tensión.
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="u2" class="tab-content">
-            <h2>Unidad 2: Transistores BJT</h2>
-            <p>El Transistor de Uniones Bipolares (BJT) revolucionó la tecnología como amplificador y conmutador.</p>
+            <h2>2. Transistores BJT</h2>
+            <p>El Transistor de Uniones Bipolares (BJT) revolucionó la tecnología moderna como amplificador y conmutador rápido.</p>
             
             <div class="grid">
                 <div class="card">
                     <h3>¿Qué es el BJT?</h3>
-                    <p>Es un dispositivo de tres terminales (Colector, Base y Emisor) donde una pequeña corriente en la Base controla una corriente mucho mayor entre el Colector y el Emisor. Es un dispositivo **controlado por corriente**.</p>
+                    <p>Es un dispositivo de tres terminales (Colector, Base y Emisor) donde una pequeña corriente en la Base controla una corriente mucho mayor entre el Colector y el Emisor. Es un dispositivo <strong>controlado por corriente</strong>.</p>
                 </div>
 
                 <div class="card">
                     <h3>Regiones de Operación</h3>
-                    <p>Dependiendo de la polarización, el BJT opera en:</p>
+                    <p>Dependiendo de la polarización de sus uniones, el BJT opera en:</p>
                     <ul>
-                        <li><strong>Corte:</strong> No hay corriente de base (Interruptor abierto).</li>
-                        <li><strong>Saturación:</strong> Máxima corriente permitida (Interruptor cerrado).</li>
-                        <li><strong>Activa:</strong> Funciona como amplificador lineal.</li>
+                        <li><strong>Corte:</strong> No hay corriente de base (Funciona como Interruptor abierto).</li>
+                        <li><strong>Saturación:</strong> Máxima corriente permitida (Funciona como Interruptor cerrado).</li>
+                        <li><strong>Activa:</strong> Funciona de forma lineal para amplificar señales.</li>
                     </ul>
                 </div>
 
                 <div class="card">
                     <h3>Polarización y Conmutación</h3>
-                    <p>Para usarlo como **conmutador** (on/off digital), saltamos directamente de Corte a Saturación. Para usarlo como amplificador, requerimos un circuito de polarización estable que fije el punto de trabajo (Q) en la región activa.</p>
+                    <p>Para usarlo como conmutador digital, se salta entre Corte y Saturación. Para usarlo como amplificador, requerimos un circuito de polarización estable que fije el punto de trabajo estático (Q).</p>
                     
                     <div class="box analogy">
-                        <strong>Analogía:</strong> La base es como la llave de un grifo de agua. Un pequeño esfuerzo con tus dedos (corriente de base) controla un chorro gigante de agua (corriente de colector).
+                        <strong>Analogía:</strong> La base funciona igual que la llave de un grifo de agua. Un pequeño esfuerzo con tus dedos (corriente de base) controla un chorro potente de agua (corriente de colector).
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="u3" class="tab-content">
-            <h2>Unidad 3: FET, MOSFET y Amplificadores</h2>
-            <p>Transistores de efecto de campo: la base de los procesadores modernos y la amplificación de alta eficiencia.</p>
+            <h2>3. FET, MOSFET y Amplificadores</h2>
+            <p>Transistores de efecto de campo: la columna vertebral de los procesadores y la amplificación de alta eficiencia.</p>
             
             <div class="grid">
                 <div class="card">
                     <h3>FET y MOSFET</h3>
-                    <p>A diferencia del BJT, el **MOSFET** es un dispositivo **controlado por voltaje** en su terminal de compuerta (Gate). No consume corriente de control en estado estático, haciéndolo extremadamente eficiente.</p>
+                    <p>A diferencia del BJT, el <strong>MOSFET</strong> es un dispositivo <strong>controlado por voltaje</strong> en su terminal de compuerta (Gate). No consume corriente de control en estado estático, haciéndolo ideal para compuertas lógicas digitales.</p>
                     <div class="box analogy">
-                        <strong>Analogía:</strong> Es como una manguera flexible. El voltaje en la compuerta funciona pisando la manguera para detener el agua, sin gastar agua en el proceso de control.
+                        <strong>Analogía:</strong> Es como una manguera de hule. El voltaje en la compuerta funciona pisando la manguera para detener el flujo de agua, sin gastar nada de agua en el proceso de control.
                     </div>
                 </div>
 
                 <div class="card">
-                    <h3>Amplificadores con transistores</h3>
-                    <p>Utilizando las propiedades de ganancia de estos dispositivos acoplados a capacitores y resistencias, se pueden magnificar señales analógicas débiles (como señales de micrófonos o sensores) sin distorsionar la información.</p>
+                    <h3>Amplificadores con Transistores</h3>
+                    <p>Utilizando las propiedades de ganancia de estos componentes acoplados a redes de resistencias, se pueden magnificar señales analógicas débiles (como microvoltios de sensores o micrófonos) sin alterar su forma original.</p>
                     <div class="box app-real">
-                        <strong>Aplicación Real:</strong> Los bloques de cómputo en CPUs/GPUs actuales (miles de millones de MOSFETs integrados) y sistemas de audio de potencia.
+                        <strong>Aplicación Real:</strong> Microprocesadores modernos de computadoras (con miles de millones de MOSFETs integrados) y etapas de potencia de audio.
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="u4" class="tab-content">
-            <h2>Unidad 4: Tiristores y Electrónica de Potencia</h2>
-            <p>Control y conversión de grandes volúmenes de energía eléctrica a nivel industrial.</p>
+            <h2>4. Tiristores y Electrónica de Potencia</h2>
+            <p>Control de alta potencia y conversión eficiente de grandes volúmenes de energía eléctrica industrial.</p>
             
             <div class="grid">
                 <div class="card">
                     <h3>El SCR (Silicon Controlled Rectifier)</h3>
-                    <p>Es un diodo de control. Cuenta con un ánodo, un cátodo y un gatillo (Gate). Una vez se activa mediante un pulso en el gatillo, conduce de forma continua hasta que la corriente principal cae a cero.</p>
+                    <p>Es un diodo de control de cuatro capas. Cuenta con ánodo, cátodo y compuerta (Gate). Un pulso en la compuerta lo activa, y continuará conduciendo de forma permanente hasta que la corriente principal caiga por debajo del umbral de mantenimiento.</p>
                 </div>
 
                 <div class="card">
                     <h3>El TRIAC</h3>
-                    <p>Funciona de manera similar a dos SCR conectados en paralelo e inversos. Esto le permite conducir corriente en **ambas direcciones**, haciéndolo el rey del control en Corriente Alterna (AC).</p>
+                    <p>Es el equivalente a dos SCR conectados en paralelo inverso con una compuerta común. Esto le otorga la capacidad única de conducir corriente en <strong>ambas direcciones</strong> del ciclo, dominando el control en Corriente Alterna (AC).</p>
                     <div class="box app-real">
-                        <strong>Aplicación Real:</strong> Los "Dimmers" de luz para regular la intensidad de bombillas o el control de velocidad de taladros y ventiladores.
+                        <strong>Aplicación Real:</strong> Los sistemas "Dimmer" para regular la intensidad de iluminación hogareña y el control de velocidad en motores eléctricos monofásicos.
                     </div>
                 </div>
 
                 <div class="card">
                     <h3>Electrónica de Potencia</h3>
-                    <p>Se encarga de transformar la energía adaptándola a las necesidades de la carga. Gestiona inversores (DC a AC), rectificadores industriales y troceadores mediante el uso eficiente de conmutadores estáticos.</p>
+                    <p>Se encarga de transformar y adaptar la energía eléctrica mediante conmutación estática. Administra inversores modernos (conversión de DC a AC), rectificadores industriales y troceadores de onda.</p>
                     <div class="box analogy">
-                        <strong>Analogía:</strong> Es como un switch de luz ultra rápido que puede prenderse y apagarse miles de veces por segundo para entregar solo la cantidad exacta de energía requerida.
+                        <strong>Analogía:</strong> Es como un switch de luz ultra veloz que puede encenderse y apagarse miles de veces por segundo para entregar de forma exacta la energía requerida por la carga.
                     </div>
                 </div>
             </div>
@@ -421,7 +473,16 @@
             evt.currentTarget.classList.add("active");
         }
 
-        // NUEVA LÓGICA: Interacción usando JavaScript (Slider de Voltaje/Brillo)
+        // Lógica del botón VOLVER (Heredada de tu código original)
+        function volver() {
+            if (document.referrer !== "" && !document.referrer.includes(window.location.hostname)) {
+                window.history.back();
+            } else {
+                window.location.href = "https://jusebastianjimenez18-spec.github.io/fisicaelectronica/";
+            }
+        }
+
+        // Interacción con JavaScript: Slider de Voltaje/Brillo del LED
         const slider = document.getElementById('voltageSlider');
         const voltValue = document.getElementById('voltValue');
         const ledComponent = document.getElementById('ledComponent');
@@ -433,27 +494,23 @@
             voltValue.innerText = v.toFixed(1);
 
             if (v <= 1.7) {
-                // El diodo no conduce (Debajo de la tensión de umbral del LED)
                 ledComponent.style.backgroundColor = '#475569';
                 ledComponent.style.boxShadow = 'none';
                 
                 diodoStatus.innerText = "Bloqueado";
-                diodoStatus.style.backgroundColor = "#ef4444"; // Rojo
+                diodoStatus.style.backgroundColor = "#ef4444"; // Rojo indicativo
                 currentValue.innerText = "0";
             } else {
-                // El diodo empieza a conducir
-                const intensidad = (v - 1.7) / (5 - 1.7); // Escala de brillo (0 a 1)
+                const intensidad = (v - 1.7) / (5 - 1.7);
                 const alpha = 0.2 + (intensidad * 0.8);
                 const shadowRadius = intensidad * 30;
                 
-                // Efecto visual del LED encendido
                 ledComponent.style.backgroundColor = `rgba(239, 68, 68, ${alpha})`;
                 ledComponent.style.boxShadow = `0 0 ${shadowRadius}px rgba(239, 68, 68, 0.8)`;
                 
                 diodoStatus.innerText = "Conducción";
-                diodoStatus.style.backgroundColor = "#10b981"; // Verde
+                diodoStatus.style.backgroundColor = "#10b981"; // Verde indicativo
                 
-                // Cálculo simulado de corriente lineal (Ley de Ohm aproximada)
                 const mA = (v - 1.7) * 6; 
                 currentValue.innerText = mA.toFixed(1);
             }
