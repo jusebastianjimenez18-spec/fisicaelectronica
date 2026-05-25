@@ -3,292 +3,639 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Electrónica - Sebas Jimenez</title>
+    <title>Física Electrónica - Sebas Jimenez</title>
     <style>
         :root {
             --azul-oscuro: #0d47a1;
             --azul-medio: #1976d2;
             --azul-claro: #81b6d4;
             --dark: #1f2937;
-            --light: #f3f4f6;
+            --light: #f0f7ff;
             --text: #374151;
             --white: #ffffff;
             --secondary: #10b981;
             --accent: #f59e0b;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+        }
 
-        body { background-color: var(--light); color: var(--text); line-height: 1.6; padding: 20px; font-size: 17px; }
+        body { 
+            background-color: var(--azul-claro); 
+            color: var(--text); 
+            line-height: 1.6; 
+            padding: 20px; 
+            font-size: 18px; 
+        }
 
         header {
-            text-align: center; background-color: #020202; color: white;
-            padding: 40px 20px; margin-bottom: 20px; border-radius: 10px; position: relative;
+            text-align: center; 
+            background-color: #020202; 
+            color: white;
+            padding: 40px 20px; 
+            margin-bottom: 20px; 
+            border-radius: 10px; 
+            position: relative;
         }
 
+        header h1 {
+            font-size: 2.5em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Botón VOLVER estilo original */
         .btn-salir {
-            position: absolute; top: 20px; right: 20px; background-color: var(--azul-medio);
-            color: white; border: none; padding: 10px 25px; border-radius: 5px;
-            cursor: pointer; font-weight: bold; transition: 0.3s; z-index: 100;
+            position: absolute; 
+            top: 20px; 
+            right: 20px; 
+            background-color: var(--azul-medio);
+            color: white; 
+            border: none; 
+            padding: 10px 25px; 
+            border-radius: 5px;
+            cursor: pointer; 
+            font-weight: bold; 
+            transition: 0.3s; 
+            z-index: 100;
         }
 
-        .btn-salir:hover { background-color: #cc0000; transform: scale(1.05); }
+        .btn-salir:hover { 
+            background-color: #cc0000; 
+            transform: scale(1.05); 
+        }
 
-        nav { background-color: var(--white); box-shadow: 0 4px 6px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 90; border-radius: 8px; margin-bottom: 20px; }
-        .nav-container { display: flex; max-width: 1200px; margin: 0 auto; overflow-x: auto; }
-        .tab-btn { flex: 1; padding: 1rem; border: none; background: none; font-size: 1rem; font-weight: 600; cursor: pointer; transition: 0.3s; white-space: nowrap; border-bottom: 3px solid transparent; }
-        .tab-btn.active { color: var(--azul-medio); border-bottom-color: var(--azul-medio); background-color: #eff6ff; }
-
-        main { max-width: 1200px; margin: 0 auto; }
-        .tab-content { display: none; animation: fadeIn 0.5s ease; }
-        .tab-content.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
-        .card { background: var(--white); border-radius: 8px; padding: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-left: 4px solid var(--azul-medio); }
-        h2 { color: #c300ff; font-size: 2em; margin-bottom: 10px; }
-        h3 { color: var(--dark); margin-bottom: 10px; }
-
-        /* Estilos de Simuladores Interactivos */
-        .simulator-card { background-color: #1e293b; color: #f8fafc; border-left: 4px solid var(--accent); grid-column: 1 / -1; }
-        .simulator-card h3 { color: var(--accent); }
-        .sim-ui { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-around; background: #0f172a; padding: 20px; border-radius: 10px; margin-top: 15px; }
-        .control-panel { flex: 1; min-width: 200px; }
-        .visual-panel { flex: 1; text-align: center; min-width: 200px; }
+        /* Menú de navegación */
+        nav { 
+            background-color: var(--white); 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            position: sticky; 
+            top: 0; 
+            z-index: 90; 
+            border-radius: 8px; 
+            margin-bottom: 20px; 
+        }
         
-        input[type=range] { width: 100%; accent-color: var(--accent); }
-        .btn-interact { padding: 10px 20px; background: var(--accent); border: none; border-radius: 5px; color: #000; font-weight: bold; cursor: pointer; }
+        .nav-container { 
+            display: flex; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            overflow-x: auto; 
+        }
         
-        /* Imágenes y Diagramas */
-        .img-box { width: 100%; background: #eee; border-radius: 8px; margin: 10px 0; overflow: hidden; display: flex; justify-content: center; }
-        .img-box img { max-width: 100%; height: auto; display: block; }
+        .tab-btn { 
+            flex: 1; 
+            padding: 1rem; 
+            border: none; 
+            background: none; 
+            font-size: 1rem; 
+            font-weight: 600; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            white-space: nowrap; 
+            border-bottom: 3px solid transparent; 
+        }
+        
+        .tab-btn.active { 
+            color: var(--azul-medio); 
+            border-bottom-color: var(--azul-medio); 
+            background-color: #eff6ff; 
+        }
 
-        .box { margin-top: 1rem; padding: 1rem; border-radius: 6px; font-size: 0.9rem; }
-        .analogy { background-color: #fef3c7; border-left: 4px solid #d97706; color: #92400e; }
-        .app-real { background-color: #d1fae5; border-left: 4px solid var(--secondary); color: #065f46; }
+        main { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        
+        .tab-content { 
+            display: none; 
+            animation: fadeIn 0.5s ease; 
+        }
+        
+        .tab-content.active { 
+            display: block; 
+        }
+        
+        @keyframes fadeIn { 
+            from { opacity: 0; transform: translateY(10px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
 
-        /* Animaciones específicas */
-        .led { width: 40px; height: 40px; border-radius: 50%; background: #475569; margin: 10px auto; transition: 0.3s; }
-        .wire { height: 4px; background: #444; width: 100px; position: relative; margin: 20px auto; }
-        .electron { width: 10px; height: 10px; background: yellow; border-radius: 50%; position: absolute; top: -3px; display: none; }
-        @keyframes moveElectron { from { left: 0%; } to { left: 100%; } }
+        /* Tarjetas de diseño estructurado */
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+            gap: 1.5rem; 
+            margin-top: 1.5rem; 
+        }
+        
+        .card { 
+            background: var(--white); 
+            border-radius: 8px; 
+            padding: 1.5rem; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+            border-left: 4px solid var(--azul-medio); 
+        }
+        
+        h2 { 
+            color: #c300ff; 
+            font-size: 2em; 
+            margin-bottom: 10px; 
+        }
+        
+        h3 { 
+            color: var(--azul-oscuro); 
+            margin-bottom: 12px; 
+            font-size: 1.35em;
+        }
 
-        footer { text-align: center; padding: 2rem; background: #020202; color: white; margin-top: 4rem; border-radius: 10px; }
+        /* Cajas de simulación interactiva */
+        .simulator-card { 
+            background-color: #1e293b; 
+            color: #f8fafc; 
+            border-left: 4px solid var(--accent); 
+            grid-column: 1 / -1; 
+        }
+        
+        .simulator-card h3 { 
+            color: var(--accent); 
+        }
+        
+        .sim-ui { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 20px; 
+            align-items: center; 
+            justify-content: space-around; 
+            background: #0f172a; 
+            padding: 20px; 
+            border-radius: 10px; 
+            margin-top: 15px; 
+        }
+        
+        .control-panel { 
+            flex: 1; 
+            min-width: 250px; 
+        }
+        
+        .visual-panel { 
+            flex: 1; 
+            text-align: center; 
+            min-width: 250px; 
+        }
+        
+        input[type=range] { 
+            width: 100%; 
+            accent-color: var(--accent); 
+            margin-top: 8px;
+            cursor: pointer;
+        }
+        
+        .btn-interact { 
+            padding: 12px 24px; 
+            background: var(--accent); 
+            border: none; 
+            border-radius: 5px; 
+            color: #000; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: 0.2s;
+        }
+        
+        .btn-interact:hover {
+            transform: scale(1.03);
+        }
 
-        @media (max-width: 768px) { .btn-salir { position: static; display: block; margin: 0 auto 10px auto; } }
+        /* Contenedores de Diagramas SVG Nativos */
+        .svg-container { 
+            width: 100%; 
+            display: flex; 
+            justify-content: center; 
+            margin: 15px 0; 
+            background: #f8fafc;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .box { 
+            margin-top: 1rem; 
+            padding: 1rem; 
+            border-radius: 6px; 
+            font-size: 0.95rem; 
+        }
+        
+        .analogy { 
+            background-color: #fef3c7; 
+            border-left: 4px solid #d97706; 
+            color: #92400e; 
+        }
+        
+        .app-real { 
+            background-color: #d1fae5; 
+            border-left: 4px solid var(--secondary); 
+            color: #065f46; 
+        }
+
+        code { 
+            background-color: #ffe0b2; 
+            padding: 2px 6px; 
+            border-radius: 5px; 
+            font-weight: bold; 
+            color: #d84315;
+        }
+
+        /* Elementos del laboratorio animado */
+        .led-node { 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            background: #475569; 
+            margin: 10px auto; 
+            transition: 0.3s; 
+        }
+        
+        .circuit-wire { 
+            height: 6px; 
+            background: #334155; 
+            width: 80%; 
+            position: relative; 
+            margin: 20px auto; 
+            border-radius: 3px;
+        }
+        
+        .electron-flow { 
+            width: 12px; 
+            height: 12px; 
+            background: #fde047; 
+            border-radius: 50%; 
+            position: absolute; 
+            top: -3px; 
+            display: none; 
+            box-shadow: 0 0 8px #facc15;
+        }
+        
+        @keyframes moveLeftToRight { 
+            from { left: 0%; } 
+            to { left: 95%; } 
+        }
+
+        footer { 
+            text-align: center; 
+            padding: 2rem; 
+            background: #020202; 
+            color: white; 
+            margin-top: 4rem; 
+            border-radius: 10px; 
+        }
+
+        @media (max-width: 768px) { 
+            .btn-salir { position: static; display: block; margin: 0 auto 10px auto; } 
+        }
     </style>
 </head>
 <body>
 
     <header>
         <h1>..FISICA ELECTRONICA..</h1>
-        <p>Laboratorio Virtual de Componentes y Potencia</p>
+        <p>Plataforma Académica de Aprendizaje Automático de Circuitos</p>
         <button class="btn-salir" onclick="volver()">VOLVER</button>
     </header>
 
     <nav>
         <div class="nav-container">
-            <button class="tab-btn active" onclick="openTab(event, 'u1')">U1: Diodos</button>
-            <button class="tab-btn" onclick="openTab(event, 'u2')">U2: BJT</button>
-            <button class="tab-btn" onclick="openTab(event, 'u3')">U3: FET/MOSFET</button>
-            <button class="tab-btn" onclick="openTab(event, 'u4')">U4: Potencia</button>
+            <button class="tab-btn active" onclick="openTab(event, 'u1')">Unidad 1: Diodos</button>
+            <button class="tab-btn" onclick="openTab(event, 'u2')">Unidad 2: BJT</button>
+            <button class="tab-btn" onclick="openTab(event, 'u3')">Unidad 3: FET y MOSFET</button>
+            <button class="tab-btn" onclick="openTab(event, 'u4')">Unidad 4: Potencia</button>
         </div>
     </nav>
 
     <main>
         <section id="u1" class="tab-content active">
-            <h2>1. Semiconductores y Diodos</h2>
+            <h2>Unidad 1: Semiconductores y Diodos</h2>
+            
             <div class="grid">
                 <div class="card simulator-card">
-                    <h3>🕹️ Lab 1: Barrera de Potencial del LED</h3>
+                    <h3>⚡ Laboratorio Interactiva 1: Curva y Barrera de Diodo</h3>
+                    <p>Aumenta la tensión de la fuente. Verás que la conducción solo inicia al superar la barrera de potencial intrínseca (aprox. <code>0.7V</code> para Silicio común, y <code>1.8V</code> para un LED).</p>
                     <div class="sim-ui">
                         <div class="control-panel">
-                            <label>Voltaje: <b id="u1-v">0</b>V</label>
+                            <label>Voltaje de Entrada: <b id="u1-v-val" style="color:var(--accent)">0.0</b> V</label>
                             <input type="range" id="u1-slider" min="0" max="5" step="0.1" value="0">
                         </div>
                         <div class="visual-panel">
-                            <div id="u1-led" class="led"></div>
-                            <small id="u1-msg">Diodo bloqueado</small>
+                            <div id="u1-led-visual" class="led-node"></div>
+                            <small id="u1-status-msg">Estado: Bloqueo (Isulado)</small>
                         </div>
                     </div>
                 </div>
+
+                <div class="card">
+                    <h3>Semiconductores</h3>
+                    <p>Elementos como el Silicio (Si) que tienen 4 electrones de valencia. Mediante el proceso de dopado con impurezas, modifican radicalmente sus propiedades de conducción eléctrica.</p>
+                    <div class="box analogy">
+                        <strong>Analogía:</strong> Es como un teatro con asientos vacíos estructurados; si añades personas extras (electrones) o quitas asientos (huecos), la movilidad cambia por completo.
+                    </div>
+                </div>
+
                 <div class="card">
                     <h3>Unión PN</h3>
-                    <div class="img-box"><img src="https://www.fluke.com/s3fs-public/junction-pn.jpg" alt="Unión PN"></div>
-                    <p>Es el punto donde se encuentran los materiales P y N, creando una zona de deplexión.</p>
+                    <p>Se forma al unir un cristal semiconductor tipo P (con exceso de huecos) y uno tipo N (con exceso de electrones). En la frontera se crea una <strong>Zona de Deplexión</strong> que impide el flujo libre de cargas.</p>
+                    <div class="svg-container">
+                        <svg width="240" height="80" viewBox="0 0 240 80">
+                            <rect x="10" y="10" width="110" height="60" fill="#fca5a5" stroke="#334155" stroke-width="2"/>
+                            <rect x="120" y="10" width="110" height="60" fill="#93c5fd" stroke="#334155" stroke-width="2"/>
+                            <text x="45" y="45" font-weight="bold" fill="#7f1d1d">ZONA P</text>
+                            <text x="155" y="45" font-weight="bold" fill="#1e3a8a">ZONA N</text>
+                            <line x1="120" y1="10" x2="120" y2="70" stroke="#ef4444" stroke-width="2" stroke-dasharray="4"/>
+                        </svg>
+                    </div>
                 </div>
+
+                <div class="card">
+                    <h3>Diodos</h3>
+                    <p>Componente electrónico de dos terminales que permite la circulación de la corriente eléctrica en un solo sentido (Polarización Directa) y la bloquea en el sentido opuesto (Polarización Inversa).</p>
+                    <div class="box app-real">
+                        <strong>Aplicación Real:</strong> Puentes rectificadores para transformar corriente alterna (AC) a corriente continua (DC).
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>LED (Light Emitting Diode)</h3>
+                    <p>Un diodo semiconductor especial que emite fotones (luz) cuando se polariza directamente y los electrones cruzan la unión PN recombinándose con los huecos libres.</p>
+                    <div class="svg-container">
+                        <svg width="120" height="80" viewBox="0 0 120 80">
+                            <line x1="10" y1="40" x2="45" y2="40" stroke="#334155" stroke-width="3"/>
+                            <polygon points="45,20 45,60 80,40" fill="#334155" stroke="#334155" stroke-width="2"/>
+                            <line x1="80" y1="20" x2="80" y2="60" stroke="#334155" stroke-width="3"/>
+                            <line x1="80" y1="40" x2="110" y2="40" stroke="#334155" stroke-width="3"/>
+                            <line x1="55" y1="15" x2="40" y2="2" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow)"/>
+                            <line x1="70" y1="15" x2="55" y2="2" stroke="#ef4444" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+
                 <div class="card">
                     <h3>Diodo Zener</h3>
-                    <div class="img-box"><img src="https://www.electronicshub.org/wp-content/uploads/2014/10/Zener-Diode-as-Voltage-Regulator.jpg" alt="Zener"></div>
-                    <div class="box analogy">Es como una válvula de alivio que se abre solo cuando la presión (voltaje) supera un límite.</div>
+                    <p>Un diodo dopado industrialmente para trabajar en la zona de ruptura o inversa de manera controlada. Cuando se alcanza su voltaje nominal, estabiliza la tensión de salida.</p>
+                    <div class="box app-real">
+                        <strong>Aplicación Real:</strong> Reguladores fijos de voltaje y etapas protectoras contra sobretensiones transitorias.
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="u2" class="tab-content">
-            <h2>2. Transistores BJT</h2>
+            <h2>Unidad 2: Transistores de Unión Bipolar (BJT)</h2>
+            
             <div class="grid">
                 <div class="card simulator-card">
-                    <h3>🕹️ Lab 2: BJT como Conmutador (Switch)</h3>
+                    <h3>🕹️ Laboratorio Interactiva 2: BJT como Conmutador Electrónico</h3>
+                    <p>Inyecta corriente pulsando el botón para simular una señal digital en la terminal Base. Observa cómo fluye la corriente principal Colector-Emisor al entrar en saturación.</p>
                     <div class="sim-ui">
                         <div class="control-panel">
-                            <p>Corriente de Base (Ib):</p>
-                            <button id="u2-btn" class="btn-interact">CERRAR INTERRUPTOR</button>
+                            <button id="u2-switch-btn" class="btn-interact">APLICAR PULSO EN BASE (Ib)</button>
                         </div>
                         <div class="visual-panel">
-                            <p>Flujo Colector-Emisor:</p>
-                            <div class="wire"><div id="u2-electron" class="electron"></div></div>
-                            <small id="u2-msg">Estado: Corte (OFF)</small>
+                            <div class="circuit-wire"><div id="u2-electron-node" class="electron-flow"></div></div>
+                            <small id="u2-mode-msg">Región Actual: CORTE (Circuito Abierto)</small>
                         </div>
                     </div>
                 </div>
+
                 <div class="card">
-                    <h3>Símbolo y Estructura</h3>
-                    <div class="img-box"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/NPN_symbol.svg/1200px-NPN_symbol.svg.png" style="height:100px; width:auto;"></div>
-                    <p>El BJT usa una pequeña corriente en la base para controlar una gran corriente en el colector.</p>
+                    <h3>BJT (Bipolar Junction Transistor)</h3>
+                    <p>Componente activo de tres terminales: Colector, Base y Emisor. Se define como un dispositivo <strong>controlado por corriente</strong>, donde una corriente de base pequeña gobierna una de colector mayor.</p>
+                    <div class="svg-container">
+                        <svg width="120" height="100" viewBox="0 0 120 100">
+                            <line x1="20" y1="50" x2="50" y2="50" stroke="#334155" stroke-width="3"/>
+                            <line x1="50" y1="25" x2="50" y2="75" stroke="#334155" stroke-width="4"/>
+                            <line x1="50" y1="35" x2="90" y2="15" stroke="#334155" stroke-width="3"/>
+                            <line x1="50" y1="65" x2="90" y2="85" stroke="#334155" stroke-width="3"/>
+                            <polygon points="80,80 90,85 85,73" fill="#334155"/>
+                            <text x="5" y="45" font-size="12" font-weight="bold">B</text>
+                            <text x="85" y="12" font-size="12" font-weight="bold">C</text>
+                            <text x="92" y="95" font-size="12" font-weight="bold">E</text>
+                        </svg>
+                    </div>
                 </div>
+
                 <div class="card">
-                    <h3>Regiones</h3>
-                    <div class="box app-real"><b>Corte:</b> Switch Abierto.<br><b>Saturación:</b> Switch Cerrado.<br><b>Activa:</b> Amplificador de Audio.</div>
+                    <h3>Regiones de Operación</h3>
+                    <p>El comportamiento varía según la polarización de sus junturas:</p>
+                    <ul>
+                        <li><strong>Corte:</strong> Ib = 0; no hay paso de corriente (Switch OFF).</li>
+                        <li><strong>Saturación:</strong> Máximo flujo permitido (Switch ON).</li>
+                        <li><strong>Activa:</strong> Comportamiento lineal ideal para amplificación.</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Polarización y Conmutación</h3>
+                    <p>La polarización establece el punto Q estático del transistor. En los sistemas digitales modernos, se elimina la región activa operando únicamente entre las fronteras de corte y saturación.</p>
+                    <div class="box analogy">
+                        <strong>Analogía:</strong> Es como un grifo doméstico de agua. El giro del manubrio (corriente de base) abre la compuerta para el caudal completo del tubo (colector a emisor).
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="u3" class="tab-content">
-            <h2>3. FET y MOSFET</h2>
+            <h2>Unidad 3: Transistores de Efecto de Campo (FET / MOSFET)</h2>
+            
             <div class="grid">
                 <div class="card simulator-card">
-                    <h3>🕹️ Lab 3: Control por Campo Eléctrico (Vgs)</h3>
+                    <h3>🕹️ Laboratorio Interactiva 3: Control por Campo Eléctrico</h3>
+                    <p>Varía el voltaje de compuerta $V_{gs}$. Observa cómo el campo electrostático modifica físicamente las dimensiones geométricas del canal semiconductor de conducción.</p>
                     <div class="sim-ui">
                         <div class="control-panel">
-                            <label>Voltaje Compuerta (Vgs): <b id="u3-v">0</b>V</label>
+                            <label>Voltaje Compuerta Vgs: <b id="u3-vgs-val" style="color:var(--accent)">0</b> V</label>
                             <input type="range" id="u3-slider" min="0" max="10" step="1" value="0">
                         </div>
                         <div class="visual-panel">
-                            <p>Ancho del Canal:</p>
-                            <div id="u3-canal" style="width:100px; height:10px; background:#3b82f6; margin:10px auto; transition:0.3s;"></div>
-                            <small id="u3-msg">Canal cerrado</small>
+                            <p>Ancho Dinámico del Canal Interno:</p>
+                            <div id="u3-channel-bar" style="width:140px; height:6px; background:#3b82f6; margin:15px auto; transition:0.3s; border-radius:4px;"></div>
+                            <small id="u3-status-msg">Estado: Canal Cerrado (Estrangulación)</small>
                         </div>
                     </div>
                 </div>
+
                 <div class="card">
-                    <h3>Estructura MOSFET</h3>
-                    <div class="img-box"><img src="https://media.geeksforgeeks.org/wp-content/uploads/20210217112022/E_MOSFET.png" alt="MOSFET"></div>
-                    <p>No requiere corriente de entrada, solo voltaje, lo que lo hace ultra eficiente.</p>
+                    <h3>FET / MOSFET</h3>
+                    <p>Transistor de Efecto de Campo Metal-Óxido-Semiconductor. A diferencia del BJT, es un dispositivo <strong>controlado por voltaje</strong>. La terminal Gate está aislada eléctricamente por una capa de dióxido de silicio.</p>
+                    <div class="box app-real">
+                        <strong>Aplicación Real:</strong> Conmutadores de alta velocidad en fuentes de alimentación de computadoras y compuertas lógicas dentro de microprocesadores.
+                    </div>
                 </div>
+
                 <div class="card">
-                    <h3>Analogía</h3>
-                    <div class="box analogy">Es como pisar una manguera: el pie (voltaje) controla el agua sin gastar agua.</div>
+                    <h3>Amplificadores</h3>
+                    <p>Al procesar variaciones analógicas en su entrada de alta impedancia, los MOSFETs permiten diseñar configuraciones de amplificación con baja distorsión térmica y excelente linealidad en frecuencias elevadas.</p>
+                    <div class="box analogy">
+                        <strong>Analogía:</strong> Es como controlar el flujo de una manguera flexible simplemente pisándola. Tu pie ejerce presión (voltaje) sin consumir agua para efectuar dicho control.
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="u4" class="tab-content">
-            <h2>4. SCR y TRIAC (Electrónica de Potencia)</h2>
+            <h2>Unidad 4: Tiristores y Electrónica de Potencia</h2>
+            
             <div class="grid">
                 <div class="card simulator-card">
-                    <h3>🕹️ Lab 4: Control de Fase (Dimmer con TRIAC)</h3>
+                    <h3>🕹️ Laboratorio Interactiva 4: Control de Fase con TRIAC (Dimmer)</h3>
+                    <p>Ajusta el ángulo de disparo. Al controlar en qué parte del ciclo de onda senoidal alterna se enciende el componente, modificas el valor eficaz de la potencia RMS entregada a la carga.</p>
                     <div class="sim-ui">
                         <div class="control-panel">
-                            <label>Ángulo de Disparo: <b id="u4-p">0</b>%</label>
+                            <label>Ángulo de Disparo del Pulso: <b id="u4-angle-val" style="color:var(--accent)">0</b>%</label>
                             <input type="range" id="u4-slider" min="0" max="100" step="1" value="0">
                         </div>
                         <div class="visual-panel">
-                            <p>Carga (Lámpara AC):</p>
-                            <div id="u4-lamp" class="led" style="width:60px; height:60px; background:#333;"></div>
-                            <small>Potencia entregada</small>
+                            <p>Carga de Salida (Lámpara):</p>
+                            <div id="u4-lamp-node" class="led-node" style="width:60px; height:60px; background:#1e293b; border: 2px solid #fff;"></div>
+                            <small id="u4-power-msg">Potencia Eficaz: 0%</small>
                         </div>
                     </div>
                 </div>
+
                 <div class="card">
-                    <h3>SCR vs TRIAC</h3>
-                    <div class="img-box"><img src="https://www.elprocus.com/wp-content/uploads/SCR-and-TRIAC.png" alt="SCR TRIAC"></div>
-                    <p>El SCR controla media onda (DC), el TRIAC controla la onda completa (AC).</p>
+                    <h3>SCR (Silicon Controlled Rectifier)</h3>
+                    <p>Dispositivo unidireccional de cuatro capas de estado sólido. Al recibir un pulso en su terminal Gate, entra en conducción permanente y no se apagará hasta que la corriente principal caiga a cero.</p>
+                    <div class="svg-container">
+                        <svg width="140" height="80" viewBox="0 0 140 80">
+                            <line x1="10" y1="40" x2="50" y2="40" stroke="#334155" stroke-width="3"/>
+                            <polygon points="50,20 50,60 90,40" fill="#334155" stroke="#334155" stroke-width="2"/>
+                            <line x1="90" y1="20" x2="90" y2="60" stroke="#334155" stroke-width="3"/>
+                            <line x1="90" y1="40" x2="130" y2="40" stroke="#334155" stroke-width="3"/>
+                            <line x1="60" y1="50" x2="40" y2="70" stroke="#334155" stroke-width="2"/>
+                            <text x="35" y="75" font-size="11" font-weight="bold">G</text>
+                        </svg>
+                    </div>
                 </div>
+
                 <div class="card">
-                    <h3>Aplicación Industrial</h3>
-                    <div class="box app-real">Control de velocidad de motores industriales y hornos de fundición eléctrica.</div>
+                    <h3>TRIAC</h3>
+                    <p>Interruptor bidireccional equivalente a dos SCR conectados internamente en contratopología paralelo. Permite gobernar corrientes en ambas direcciones de una onda AC completa.</p>
+                    <div class="box analogy">
+                        <strong>Analogía:</strong> Es como un switch de pared que posee la capacidad mágica de prenderse y apagarse de forma controlada hasta 120 veces en un solo segundo de reloj.
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Electrónica de Potencia</h3>
+                    <p>Rama de la ingeniería eléctrica encargada de procesar, controlar y convertir energía eléctrica mediante dispositivos estáticos de conmutación a gran escala industrial.</p>
+                    <div class="box app-real">
+                        <strong>Aplicación Real:</strong> Inversores solares trifásicos, cargadores rápidos vehiculares y variadores de frecuencia industriales.
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>© 2026 - Sebas Jimenez - Estudiante de Ingeniería</p>
+        <p>© 2026 - Sebas Jimenez - Ingeniería y Desarrollo Web</p>
     </footer>
 
     <script>
-        // Navegación
+        // Sistema global de navegación por pestañas
         function openTab(evt, tabId) {
             const contents = document.querySelectorAll(".tab-content");
             const buttons = document.querySelectorAll(".tab-btn");
-            contents.forEach(c => c.classList.remove("active"));
-            buttons.forEach(b => b.classList.remove("active"));
+            
+            contents.forEach(content => content.classList.remove("active"));
+            buttons.forEach(btn => btn.classList.remove("active"));
+            
             document.getElementById(tabId).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
 
+        // Lógica del botón VOLVER (Heredada exactamente del repositorio origen)
         function volver() {
-            window.location.href = "https://jusebastianjimenez18-spec.github.io/fisicaelectronica/";
+            if (document.referrer !== "" && !document.referrer.includes(window.location.hostname)) {
+                window.history.back();
+            } else {
+                window.location.href = "https://jusebastianjimenez18-spec.github.io/fisicaelectronica/";
+            }
         }
 
-        // --- INTERACCIONES ---
+        // --- SISTEMAS DE CONTROL INTERACTIVO JAVASCRIPT ---
 
-        // U1: LED
+        // Unidad 1: Slider LED
         document.getElementById('u1-slider').addEventListener('input', function(e) {
-            const v = e.target.value;
-            document.getElementById('u1-v').innerText = v;
-            const led = document.getElementById('u1-led');
-            const msg = document.getElementById('u1-msg');
+            const v = parseFloat(e.target.value);
+            document.getElementById('u1-v-val').innerText = v.toFixed(1);
+            const led = document.getElementById('u1-led-visual');
+            const msg = document.getElementById('u1-status-msg');
+            
             if(v > 1.8) {
-                const op = (v - 1.8) / 3.2;
-                led.style.background = `rgba(255, 0, 0, ${op})`;
-                led.style.boxShadow = `0 0 ${v*5}px red`;
-                msg.innerText = "Conducción Directa";
+                const alpha = (v - 1.8) / 3.2;
+                led.style.background = `rgba(239, 68, 68, ${0.2 + alpha * 0.8})`;
+                led.style.boxShadow = `0 0 ${v * 6}px #ef4444`;
+                msg.innerText = "Estado: Polarización Directa (ON)";
             } else {
                 led.style.background = "#475569";
                 led.style.boxShadow = "none";
-                msg.innerText = "Diodo bloqueado";
+                msg.innerText = "Estado: Bloqueo (Tensión Insuficiente)";
             }
         });
 
-        // U2: BJT Switch
-        let u2On = false;
-        document.getElementById('u2-btn').addEventListener('click', function() {
-            u2On = !u2On;
-            const electron = document.getElementById('u2-electron');
-            const msg = document.getElementById('u2-msg');
-            if(u2On) {
-                this.innerText = "ABRIR INTERRUPTOR";
+        // Unidad 2: BJT Conmutador (Switch)
+        let bjtActive = false;
+        document.getElementById('u2-switch-btn').addEventListener('click', function() {
+            bjtActive = !bjtActive;
+            const node = document.getElementById('u2-electron-node');
+            const msg = document.getElementById('u2-mode-msg');
+            
+            if(bjtActive) {
+                this.innerText = "REMOVER PULSO EN BASE (Ib)";
                 this.style.background = "#ef4444";
-                electron.style.display = "block";
-                electron.style.animation = "moveElectron 0.5s linear infinite";
-                msg.innerText = "Estado: SATURACIÓN (ON)";
+                node.style.display = "block";
+                node.style.animation = "moveLeftToRight 0.6s linear infinite";
+                msg.innerText = "Región Actual: SATURACIÓN (Circuito Cerrado)";
             } else {
-                this.innerText = "CERRAR INTERRUPTOR";
+                this.innerText = "APLICAR PULSO EN BASE (Ib)";
                 this.style.background = "var(--accent)";
-                electron.style.display = "none";
-                msg.innerText = "Estado: CORTE (OFF)";
+                node.style.display = "none";
+                node.style.animation = "none";
+                msg.innerText = "Región Actual: CORTE (Circuito Abierto)";
             }
         });
 
-        // U3: MOSFET
+        // Unidad 3: MOSFET Canal
         document.getElementById('u3-slider').addEventListener('input', function(e) {
-            const v = e.target.value;
-            document.getElementById('u3-v').innerText = v;
-            const canal = document.getElementById('u3-canal');
-            const msg = document.getElementById('u3-msg');
-            canal.style.height = (v * 4 + 2) + "px";
-            msg.innerText = v > 2 ? "Canal fluyendo" : "Canal cerrado";
+            const val = parseInt(e.target.value);
+            document.getElementById('u3-vgs-val').innerText = val;
+            const channel = document.getElementById('u3-channel-bar');
+            const msg = document.getElementById('u3-status-msg');
+            
+            // Cambia el grosor del canal dinámicamente
+            channel.style.height = (6 + val * 2.5) + "px";
+            
+            if(val > 2) {
+                msg.innerText = "Estado: Canal Conductor Formado";
+                channel.style.background = "#10b981";
+            } else {
+                msg.innerText = "Estado: Canal Cerrado (Estrangulación)";
+                channel.style.background = "#3b82f6";
+            }
         });
 
-        // U4: TRIAC
+        // Unidad 4: TRIAC / Dimmer
         document.getElementById('u4-slider').addEventListener('input', function(e) {
-            const p = e.target.value;
-            document.getElementById('u4-p').innerText = p;
-            const lamp = document.getElementById('u4-lamp');
-            lamp.style.background = `rgba(255, 255, 0, ${p/100})`;
-            lamp.style.boxShadow = `0 0 ${p/2}px yellow`;
+            const val = parseInt(e.target.value);
+            document.getElementById('u4-angle-val').innerText = val;
+            const lamp = document.getElementById('u4-lamp-node');
+            const msg = document.getElementById('u4-power-msg');
+            
+            lamp.style.background = `rgba(251, 191, 36, ${val / 100})`;
+            lamp.style.boxShadow = val > 5 ? `0 0 ${val / 2}px #fbbf24` : "none";
+            msg.innerText = `Potencia Eficaz: ${val}%`;
         });
     </script>
 </body>
